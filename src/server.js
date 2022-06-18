@@ -9,4 +9,4 @@ myEmitter.on('log', (msg)=> logEvents(msg));
 
 setTimeout(()=>{
     myEmitter.emit('log', 'Hello World!')
-})
+}, 3000)
