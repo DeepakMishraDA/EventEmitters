@@ -19,4 +19,6 @@ http
       logEvents(req.method);
     }
   })
-  .listen(3000);
+  .listen(3000, () => {
+      console.log("Server is running!")
+});
