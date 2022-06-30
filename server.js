@@ -2,9 +2,11 @@ const EventEmitter = require("events");
 const http = require("http");
 
 const logEvents = require("./logEvents");
-class OurEmitter extends EventEmitter {}
+const dataFetch = require("./src/caching");
 
+class OurEmitter extends EventEmitter {}
 const myEmitter = new OurEmitter();
+var dataUrl = "https://jsonplaceholder.typicode.com/photos";
 // myEmitter.on("log", (msg) => logEvents(msg));
 
 // setTimeout(() => {
@@ -14,7 +16,7 @@ const myEmitter = new OurEmitter();
 http
   .createServer((req, res) => {
     if (req.method === "GET") {
-      res.end("Hi Deepak");
+      dataFetch(dataUrl,res);
     } else {
       logEvents(req.method);
     }
